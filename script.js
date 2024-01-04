@@ -5,7 +5,7 @@ var xhr = new XMLHttpRequest();
 xhr.responseType = "json";
 
 // Abrir uma conexão com o arquivo .php
-xhr.open("GET", "data.php");
+xhr.open("GET", "dados.usuario.php");
 
 // Enviar a requisição
 xhr.send();
