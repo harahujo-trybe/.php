@@ -1,15 +1,29 @@
-// Função para gerar um número aleatório entre min e max
-function gerarNumeroAleatorio(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+// Criar um objeto XMLHttpRequest
+var xhr = new XMLHttpRequest();
 
-// Função para enviar uma requisição Ajax para o arquivo php
-function enviarRequisicaoAjax() {
-  // Gerar um número aleatório entre 1 e 10
-  var numero = gerarNumeroAleatorio(1, 10);
-  // Enviar a requisição Ajax usando o método $.get
-  $.get("gerarNumero.php", {numero: numero}, function(resposta) {
-    // Mostrar a resposta do php na tela
-    alert(resposta);
-  });
-}
+// Definir o tipo de resposta como JSON
+xhr.responseType = "json";
+
+// Abrir uma conexão com o arquivo .php
+xhr.open("GET", "data.php");
+
+// Enviar a requisição
+xhr.send();
+
+// Esperar pela resposta
+xhr.onload = function() {
+    // Verificar se a resposta foi bem sucedida
+    if (xhr.status == 200) {
+        // Obter os dados da resposta
+        var data = xhr.response;
+
+        // Criar elementos HTML com os dados
+        var container = document.getElementById("container");
+        for (var i = 0; i < data.length; i++) {
+            var item = document.createElement("div");
+            item.className = "item";
+            item.textContent = data[i].name + ": " + data[i].value;
+            container.appendChild(item);
+        }
+    }
+};
