@@ -1,4 +1,4 @@
-//Atualizar nome 
+i//Atualizar nome 
 // Criar um objeto XMLHttpRequest
 var xhr = new XMLHttpRequest();
 
